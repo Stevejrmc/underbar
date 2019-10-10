@@ -131,9 +131,12 @@
     // like each(), but in addition to running the operation on all
     // the members, it also maintains an array of results.
     var result = [];
-    for (var i = 0; i < collection.length; i++) {
-      result.push(iterator(collection[i], i, collection));
-    }
+    // for (var i = 0; i < collection.length; i++) {
+    //   result.push(iterator(collection[i], i, collection));
+    // }
+    _.each(collection,(val,idx,arr) => {
+      result.push(iterator(val,idx,arr));
+    });
     return result;
   };
 
@@ -426,6 +429,6 @@
   //
   // Note: This is difficult! It may take a while to implement.
   _.throttle = function(func, wait) {
-    
+
   };
 }());
