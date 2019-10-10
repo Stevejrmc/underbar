@@ -80,9 +80,9 @@
   // Return all elements of an array that pass a truth test.
   _.filter = function(collection, test) {
     var result = [];
-    for (var i = 0; i < collection.length; i++) {
-      if(test(collection[i])) result.push(collection[i]);
-    }
+    _.each(collection, (val,idx,arr) => {
+      if(test(arr[idx])) result.push(arr[idx]);
+    })
     return result;
   };
 
@@ -117,10 +117,10 @@
     is incorrect or the iterator function was not implemented as intended.
     Or I just have no idea what I'm talking and need further guidance on it's usage
     */
-    for (var i = 0; i < array.length; i++) {
-      val = isSorted ? iterator(array[i]):(result.indexOf(array[i]) === -1);
-      if(val) result.push(array[i]);
-    }
+    _.each(array, (val,idx, arr) => {
+      val = isSorted ? iterator(arr[idx]):(result.indexOf(arr[idx]) === -1);
+      if(val) result.push(arr[idx]);
+    });
     return result;
   };
 
